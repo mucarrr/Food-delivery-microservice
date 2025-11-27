@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 app.use(limiter);
 
 //routes
-app.use("/api/auth", authRoutes);
+app.use("/", authRoutes);
 //error handler
 app.use(errorMiddleware);
 //404

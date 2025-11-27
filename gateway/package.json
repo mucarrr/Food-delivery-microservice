@@ -2,14 +2,16 @@
   "type": "module",
   "name": "gateway",
   "scripts": {
-    "start": "tsx index.tsx"
+    "start": "tsx src/app.ts"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.5",
     "@types/express-http-proxy": "^1.6.7",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-http-proxy": "^2.1.2",

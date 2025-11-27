@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System files
+.angular-config*
+.CFUserTextEn*
+.emulator_cons*
+.gitconfig
+adbkey*
+
+# Lock files (optional - remove if you want to track them)
+# package-lock.json
+
