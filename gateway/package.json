@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "gateway",
+  "scripts": {
+    "start": "tsx index.tsx"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/express-http-proxy": "^1.6.7",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-http-proxy": "^2.1.2",
+    "tsx": "^4.20.6"
+  }
+}
