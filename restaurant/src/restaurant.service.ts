@@ -1,7 +1,7 @@
 // business logic 
 
-import type { IRestaurant } from "./types/index.js";
-import RestaurantModel from "./restaurant.model.js";
+import type { IMenu, IRestaurant } from "./types/index.js";
+import { RestaurantModel, MenuModel } from "./restaurant.model.js";
 import type { GetRestaurantsQueryInput } from "./restaurant.dto.js";
 
 class RestaurantService {
@@ -42,5 +42,17 @@ async getRestaurantById(id: string) {
     }
     return restaurant;
 }
+async createRestaurantMenu(data: IMenu, restaurantId: string) {
+    const newMenu = await MenuModel.create({ ...data, restaurantId });
+    return newMenu;
 }
+async getRestaurantMenu(restaurantId: string, category?: string) {
+    const filters: Record<string, any> = { restaurantId };
+    if (category) {
+        filters.category = { $regex: category, $options: 'i' };
+    }
+    const menu = await MenuModel.find(filters);
+    return menu;
+}
+} 
 export default new RestaurantService();
