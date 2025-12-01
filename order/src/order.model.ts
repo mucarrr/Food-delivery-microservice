@@ -62,10 +62,6 @@ const orderSchema = new mongoose.Schema<IOrder>({
         type: [OrderItemsSchema],
         required: [true, "Items are required"],
     },
-    totalPrice: {
-        type: Number,
-        required: false,
-    },
     deliveryAddress: {
         type: DeliveryAddressSchema,
         required: [true, "Delivery address is required"],
@@ -83,15 +79,21 @@ const orderSchema = new mongoose.Schema<IOrder>({
     },
     specialInstructions: {
         type: String,
-    },
+    }
 }, { timestamps: true, 
     toJSON: {
+        virtuals: true,
         transform: function(doc: any, ret: any) {
             ret.id = ret._id;
             delete ret._id;
             delete ret.__v;
         },
-    }
+    },
+    toObject: {
+        virtuals: true,
+    },
  });
-
+orderSchema.virtual('totalPrice').get(function() {
+    return this.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+});
 export default mongoose.model<IOrder>("Order", orderSchema, "orders");
