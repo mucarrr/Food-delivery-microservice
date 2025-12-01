@@ -24,7 +24,8 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as JWTPayload;
         if (!decoded) throw new Error("Unauthorized");
-        
+
+        req.user = decoded;
         next();
 
     } catch (error) {

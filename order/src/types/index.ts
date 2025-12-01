@@ -8,3 +8,31 @@ export interface JWTPayload {
     iat: number;
     exp: number;
 }
+export interface OrderItems {
+    itemId: string;
+    name: string;
+    price:number;
+    quantity: number;
+}
+export interface DeliveryAddress {
+    title: string;
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+    isDefault: boolean;
+}
+export type OrderStatus = 'pending' | 'confirmed' | "preparing" | "ready_for_delivery" | "on_the_way" | "delivered" | 'cancelled';
+export interface IOrder {
+    userId: string;
+    restaurantId: string;
+    items: OrderItems[];
+    totalPrice?: number;
+    deliveryAddress: DeliveryAddress;
+    paymentMethod: 'cash' | 'card' | 'wallet' | 'other';
+    status: OrderStatus;
+    specialInstructions?: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
