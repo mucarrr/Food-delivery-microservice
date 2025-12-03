@@ -73,29 +73,26 @@ async consumeMessages(){
 
             if (content.status === 'pending'){
                 await Delivery.create({
-                    orderId: content._id,
+                    orderId: content.id,
                     status: 'pending',
-
-                })
+                });
                 const courier = await Courier.findOne({ status: 'available' }).sort({ updatedAt: -1 });
                 if (courier) {
-                await Delivery.findOneAndUpdate( courier._id, 
-                    { status: 'busy' }
-                );
-                await Delivery.findOneAndUpdate( { orderId: content._id }, { status: 'confirmed', courierId: courier._id, acceptedAt: new Date() } );
+                await Courier.findByIdAndUpdate(courier._id, { status: 'busy' });
+                await Delivery.findOneAndUpdate({ orderId: content.id }, { status: 'confirmed', courierId: courier._id, acceptedAt: new Date() });
             }
             }
             if (content.status === 'ready_for_delivery'){
-                await Delivery.findOneAndUpdate( { orderId: content._id }, { status: 'ready_for_delivery' } );
+                await Delivery.findOneAndUpdate( { orderId: content.id }, { status: 'ready_for_delivery' } );
             }
             if (content.status === 'on_the_way'){
-                await Delivery.findOneAndUpdate( { orderId: content._id }, { status: 'on_the_way' } );
+                await Delivery.findOneAndUpdate( { orderId: content.id }, { status: 'on_the_way' } );
             }
             if (content.status === 'delivered'){
-                await Delivery.findOneAndUpdate( { orderId: content._id }, { status: 'delivered' } );
+                await Delivery.findOneAndUpdate( { orderId: content.id }, { status: 'delivered' } );
             }
             if (content.status === 'cancelled'){
-                await Delivery.findOneAndUpdate( { orderId: content._id }, { status: 'cancelled' } );
+                await Delivery.findOneAndUpdate( { orderId: content.id }, { status: 'cancelled' } );
             }
             
 

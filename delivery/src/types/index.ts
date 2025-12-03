@@ -42,7 +42,7 @@ export interface IDelivery {
     updatedAt: Date;
 }
 export interface IOrder {
-    _id: string;
+    id: string;
     userId: string;
     restaurantId: string;
     items: OrderItems[];

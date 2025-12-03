@@ -20,7 +20,7 @@ class OrderService {
         await this.initialize();
         const order = await OrderModel.create({ ...body, userId });
 
-        await RabbitMQService.publishMessage('order.created', { orderId: order._id, userId });
+        await RabbitMQService.publishMessage('order.created', order );
         return order;
     }
     async getOrdersByUserId(userId: string) {
