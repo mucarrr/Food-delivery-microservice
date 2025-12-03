@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 app.use(limiter);
 
 //routes
-app.use("/api/delivery", deliveryRoutes);
+app.use("/", deliveryRoutes);
 //error handler
 app.use(errorMiddleware);
 //404

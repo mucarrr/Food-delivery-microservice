@@ -2,17 +2,17 @@ import catchAsync from './utils/index.js';
 import DeliveryService from './delivery.service.js';    
 
 export class DeliveryController {
-    register = catchAsync(async (req, res, next) => {
-        res.send('Register');
+    getOrders = catchAsync(async (req, res, next) => {
+        
     });
-    login = catchAsync(async (req, res, next) => {
-        res.send('Login');
+    acceptOrder = catchAsync(async (req, res, next) => {
+        
     });
-    logout = catchAsync(async (req, res, next) => {
-        res.send('Logout');
+    updateOrderStatus = catchAsync(async (req, res, next) => {
+        
     });
-    profile = catchAsync(async (req, res, next) => {
-        res.send('Profile');
+    trackOrder = catchAsync(async (req, res, next) => {
+        
     });
 }
 export default new DeliveryController();
